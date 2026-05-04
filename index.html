@@ -2,10 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PIN Guayjoles</title>
 
+    <!-- Fuente Tecnológica -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Contenedor del fondo animado */
         #particles-js {
             position: fixed;
             top: 0;
@@ -13,7 +16,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-color: #000; /* Fondo negro profundo */
+            background-color: #000;
         }
 
         body {
@@ -25,46 +28,60 @@
             justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
-            font-family: sans-serif;
-            padding-top: 130px; 
+            font-family: 'Segoe UI', sans-serif;
+            padding: 130px 20px 40px 20px;
             gap: 20px; 
             overflow-x: hidden;
         }
 
+        /* BARRA SUPERIOR: Letra Azul con Respiración NARANJA */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+            background-color: rgba(0, 188, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #00bcff;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .top-bar p { 
+            color: #00bcff; /* El color de la letra se queda azul */
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold; 
+            margin: 0; 
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            /* Aplicamos la animación con brillo NARANJA */
+            animation: neon-glow-orange-breath 2s ease-in-out infinite alternate;
+        }
+
+        /* TÍTULO NARANJA CENTRAL */
         h2 {
             margin-bottom: 10px;
             color: #ff4b2b;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 5px rgba(255, 75, 43, 0.5);
         }
 
         .search-box {
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             height: 100px;
             overflow: hidden;
             border: 3px solid #ff4b2b;
             background-color: rgba(26, 26, 26, 0.8);
             position: relative;
             backdrop-filter: blur(3px);
-        }
-
-        iframe {
-            width: 1500px;
-            height: 2000px;
-            margin-left: -600px;
-            margin-top: -585px;
-            border: none;
-            position: absolute;
-            pointer-events: none;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 25px; 
-            margin-top: 35px;
-            position: relative;
+            box-shadow: 0 0 10px rgba(255, 75, 43, 0.3);
         }
 
         .btn-refresh {
@@ -77,8 +94,30 @@
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.2s;
-            position: relative;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* ANIMACIÓN DE RESPIRACIÓN EN COLOR NARANJA */
+        @keyframes neon-glow-orange-breath {
+            from {
+                /* Brillo naranja sutil */
+                text-shadow: 0 0 5px rgba(255, 75, 43, 0.4), 0 0 10px rgba(255, 75, 43, 0.2);
+            }
+            to {
+                /* Brillo naranja intenso */
+                text-shadow: 0 0 15px rgba(255, 75, 43, 1), 0 0 25px rgba(255, 75, 43, 0.7);
+            }
+        }
+
+        /* BOTONES DE DESCARGA */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; 
+            justify-content: center;
+            margin-top: 35px;
+            width: 100%;
         }
 
         .btn-download {
@@ -86,142 +125,89 @@
             color: #00bcff; 
             border: 2px solid #00bcff;
             padding: 12px 28px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 900;
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            position: relative;
-        }
-
-        .btn-refresh:hover {
-            background-color: #ff3311;
-            transform: scale(1.05);
+            text-align: center;
+            min-width: 180px;
+            font-family: 'Orbitron', sans-serif;
         }
 
         .btn-download:hover {
             background-color: #00bcff; 
             color: #000; 
-            transform: scale(1.05);
             box-shadow: 0px 0px 20px #00bcff;
         }
 
-        .info-box {
-            background-color: rgba(34, 34, 34, 0.7);
-            border: 1px solid #ff4500;
-            color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            max-width: 500px;
-            text-align: center;
-            margin-top: 60px;
-            position: relative;
-            backdrop-filter: blur(5px);
-        }
+        /* CONFIGURACIÓN IFRAME Y CAJA INFO */
+        iframe { width: 1500px; height: 2000px; margin-left: -600px; margin-top: -585px; border: none; position: absolute; pointer-events: none; }
+        .info-box { background-color: rgba(34, 34, 34, 0.7); border: 1px solid #ff4500; color: #fff; padding: 15px; border-radius: 8px; max-width: 500px; text-align: center; margin-top: 40px; backdrop-filter: blur(5px); }
+        .info-box a { color: #00bcff; text-decoration: underline; margin: 0 10px; display: inline-block; }
 
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            padding: 12px 0;
-            background-color: rgba(0, 188, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid #00bcff;
-            z-index: 1000;
+        @media (max-width: 600px) {
+            body { padding-top: 100px; }
+            .button-container { flex-direction: column; align-items: center; }
+            .btn-download { width: 80%; }
         }
-
-        .top-bar p { color: #00bcff; font-weight: bold; margin: 0; font-size: 1.1em; }
-        .info-box a { color: #00bcff; text-decoration: underline; margin: 0 10px; }
     </style>
 </head>
-
 <body>
-
-<!-- Contenedor para las partículas de HackerMarket -->
-<div id="particles-js"></div>
-
-<div class="top-bar">
-    <p>Pagina creada por Guayjoles con fines puramente informativos</p>
-</div>
-
-<h2>INGRESA EL PIN EN EL PROGRAMA</h2>
-
-<div class="search-box">
-    <iframe id="pinFrame" src="https://undetek.com/download/free-cs2-cheats-download/" scrolling="no"></iframe>
-</div>
-
-<button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
-
-<div class="button-container">
-    <a href="https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip" class="btn-download" download>
-        Descargar Codex
-    </a>
-    <a href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>
-        Descargar MemeSense
-    </a>
-</div>
-
-<div class="info-box">
-    <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
-    <p>Si no te muestra el PIN, asegúrate de tener instaladas estas extensiones:</p>
-    <div>
-        <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
-        <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
+    <div id="particles-js"></div>
+    
+    <div class="top-bar">
+        <p>Pagina creada por Guayjoles con fines puramente informativos</p>
     </div>
-</div>
 
-<!-- Librería de partículas -->
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <h2>INGRESA EL PIN EN EL PROGRAMA</h2>
 
-<script>
-    /* Configuración de partículas estilo HackerMarket */
-    particlesJS("particles-js", {
-        "particles": {
-            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#00bcff" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.5, "random": false },
-            "size": { "value": 3, "random": true },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#00bcff",
-                "opacity": 0.4,
-                "width": 1
+    <div class="search-box">
+        <iframe id="pinFrame" src="https://undetek.com/download/free-cs2-cheats-download/" scrolling="no"></iframe>
+    </div>
+
+    <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
+
+    <div class="button-container">
+        <a href="https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip" class="btn-download" download>Descargar Codex</a>
+        <a href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>Descargar MemeSense</a>
+    </div>
+
+    <div class="info-box">
+        <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
+        <p>Instala estas extensiones:</p>
+        <div>
+            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
+            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00bcff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5 },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00bcff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
             },
-            "move": {
-                "enable": true,
-                "speed": 2,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": { "enable": true, "mode": "grab" },
-                "onclick": { "enable": true, "mode": "push" },
-                "resize": true
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
+                "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 1 } } }
             },
-            "modes": {
-                "grab": { "distance": 200, "line_linked": { "opacity": 1 } }
-            }
-        },
-        "retina_detect": true
-    });
+            "retina_detect": true
+        });
 
-    function refreshPin() {
-        var iframe = document.getElementById('pinFrame');
-        iframe.src = iframe.src;
-    }
-</script>
-
+        function refreshPin() {
+            var iframe = document.getElementById('pinFrame');
+            iframe.src = iframe.src;
+        }
+    </script>
 </body>
 </html>
