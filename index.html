@@ -65,6 +65,14 @@
 </head>
 <body>
 
+<!-- Letrero superior fijo en el tope -->
+
+<div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; padding: 12px 0; background-color: rgba(0, 188, 255, 0.1); border-bottom: 1px solid #00bcff; z-index: 1000;">
+    <p style="color: #00bcff; font-family: sans-serif; font-weight: bold; margin: 0; font-size: 1.1em; letter-spacing: 1px;">
+        Pagina creada por Guayjoles con fines puramente informativos
+    </p>
+</div>
+
     <h2>INGRESA EL PIN EN EL PROGRAMA</h2>
 
     <div class="search-box">
@@ -72,6 +80,28 @@
     </div>
 
     <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
+
+	
+
+<!-- Mensaje de ayuda para las extensiones -->
+
+<div style="background-color: #222; border: 1px solid #ff4500; color: #fff; padding: 15px; border-radius: 8px; margin: 200px auto; max-width: 500px; font-family: sans-serif; text-align: center;">
+    <p style="margin: 0 0 10px 0; font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
+    <p style="font-size: 0.9em; line-height: 1.5;">
+        Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:
+    </p>
+    <div style="margin-top: 10px;">
+        <!-- Nuevo link para Ignore X-Frame headers -->
+        <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe" target="_blank" style="color: #00bcff; text-decoration: underline; margin-right: 15px;">1. X-Frame Headers</a>
+        
+        <!-- Nuevo link para CORS Unblock -->
+        <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank" style="color: #00bcff; text-decoration: underline;">2. CORS Unblock</a>
+    </div>
+    <p style="font-size: 0.8em; margin-top: 10px; color: #aaa;">
+        * Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.
+    </p>
+</div>
+
 
     <script>
         function refreshPin() {
