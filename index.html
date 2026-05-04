@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>PIN Guayjoles</title>
+
     <style>
         body {
             background-color: #000;
@@ -10,37 +11,36 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            justify-content: flex-start; /* 🔥 ya no centra todo */
+            min-height: 100vh;
             margin: 0;
             font-family: sans-serif;
+            padding-top: 130px; /* espacio para el header */
+            gap: 20px; /* separación automática */
         }
 
         h2 {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: #ff4b2b;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* TUS COORDENADAS DE CUADRO */
         .search-box {
-            width: 300px; 
-            height: 100px; 
-            overflow: hidden; 
+            width: 300px;
+            height: 100px;
+            overflow: hidden;
             border: 3px solid #ff4b2b;
             background-color: #1a1a1a;
             position: relative;
-            margin-bottom: 20px;
         }
 
-        /* TUS COORDENADAS DE POSICIÓN */
         iframe {
-            width: 1500px; 
+            width: 1500px;
             height: 2000px;
-            margin-left: -600px; 
-            margin-top: -580px; 
+            margin-left: -600px;
+            margin-top: -550px;
             border: none;
             position: absolute;
             pointer-events: none;
@@ -59,56 +59,101 @@
             transition: transform 0.2s;
         }
 
-        .btn-refresh:hover { background-color: #ff3311; transform: scale(1.05); }
-        .btn-refresh:active { transform: scale(0.95); }
+        .btn-refresh:hover {
+            background-color: #ff3311;
+            transform: scale(1.05);
+        }
+
+        .btn-refresh:active {
+            transform: scale(0.95);
+        }
+
+        .info-box {
+            background-color: #222;
+            border: 1px solid #ff4500;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 500px;
+            text-align: center;
+	    margin-top: 130px;
+        }
+
+        .info-box p {
+            margin: 10px 0;
+        }
+
+        .info-box a {
+            color: #00bcff;
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+
+        .top-bar {
+            position: fixed; /* 🔥 mejor que absolute */
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 12px 0;
+            background-color: rgba(0, 188, 255, 0.1);
+            border-bottom: 1px solid #00bcff;
+            z-index: 1000;
+        }
+
+        .top-bar p {
+            color: #00bcff;
+            font-weight: bold;
+            margin: 0;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
+
 <body>
 
-<!-- Letrero superior fijo en el tope -->
+<!-- Barra superior -->
+<div class="top-bar">
+    <p>Pagina creada por Guayjoles con fines puramente informativos</p>
+</div>
 
-<div style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; padding: 12px 0; background-color: rgba(0, 188, 255, 0.1); border-bottom: 1px solid #00bcff; z-index: 1000;">
-    <p style="color: #00bcff; font-family: sans-serif; font-weight: bold; margin: 0; font-size: 1.1em; letter-spacing: 1px;">
-        Pagina creada por Guayjoles con fines puramente informativos
+<h2>INGRESA EL PIN EN EL PROGRAMA</h2>
+
+<div class="search-box">
+    <iframe id="pinFrame" src="https://undetek.com/download/free-cs2-cheats-download/" scrolling="no"></iframe>
+</div>
+
+<button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
+
+<!-- Caja de ayuda -->
+<div class="info-box">
+    <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
+
+    <p>
+        Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:
+    </p>
+
+    <div>
+        <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">
+            1. X-Frame Headers
+        </a>
+        <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">
+            2. CORS Unblock
+        </a>
+    </div>
+
+    <p style="font-size: 0.8em; color: #aaa;">
+        * Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.
     </p>
 </div>
 
-    <h2>INGRESA EL PIN EN EL PROGRAMA</h2>
-
-    <div class="search-box">
-        <iframe id="pinFrame" src="https://undetek.com/download/free-cs2-cheats-download/" scrolling="no"></iframe>
-    </div>
-
-    <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
-
-	
-<!-- Mensaje de ayuda para las extensiones -->
-<!-- Contenedor para separar el cuadro de ayuda sin mover lo de arriba -->
-
-<div style="margin-top: 450px;">
-    
-    <div style="background-color: #222; border: 1px solid #ff4500; color: #fff; padding: 15px; border-radius: 8px; margin: 0 auto; max-width: 500px; font-family: sans-serif; text-align: center;">
-        <p style="margin: 0 0 10px 0; font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
-        <p style="font-size: 0.9em; line-height: 1.5;">
-            Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:
-        </p>
-        <div style="margin-top: 10px;">
-            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank" style="color: #00bcff; text-decoration: underline; margin-right: 15px;">1. X-Frame Headers</a>
-            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank" style="color: #00bcff; text-decoration: underline;">2. CORS Unblock</a>
-        </div>
-        <p style="font-size: 0.8em; margin-top: 15px; color: #aaa;">
-            * Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.
-        </p>
-    </div>
-</div>
-
-
-    <script>
-        function refreshPin() {
-            var iframe = document.getElementById('pinFrame');
-            iframe.src = iframe.src;
-        }
-    </script>
+<script>
+    function refreshPin() {
+        var iframe = document.getElementById('pinFrame');
+        iframe.src = iframe.src;
+    }
+</script>
 
 </body>
 </html>
