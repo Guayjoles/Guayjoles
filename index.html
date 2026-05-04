@@ -5,8 +5,19 @@
     <title>PIN Guayjoles</title>
 
     <style>
+        /* Contenedor del fondo animado */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #000; /* Fondo negro profundo */
+        }
+
         body {
-            background-color: #000;
+            background-color: transparent;
             color: white;
             display: flex;
             flex-direction: column;
@@ -17,6 +28,7 @@
             font-family: sans-serif;
             padding-top: 130px; 
             gap: 20px; 
+            overflow-x: hidden;
         }
 
         h2 {
@@ -25,6 +37,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            position: relative;
         }
 
         .search-box {
@@ -32,8 +45,9 @@
             height: 100px;
             overflow: hidden;
             border: 3px solid #ff4b2b;
-            background-color: #1a1a1a;
+            background-color: rgba(26, 26, 26, 0.8);
             position: relative;
+            backdrop-filter: blur(3px);
         }
 
         iframe {
@@ -46,11 +60,11 @@
             pointer-events: none;
         }
 
-        /* Contenedor para los nuevos botones */
         .button-container {
             display: flex;
             gap: 25px; 
-            margin-top: 35px; /* Ajustado para bajar un poco más */
+            margin-top: 35px;
+            position: relative;
         }
 
         .btn-refresh {
@@ -64,26 +78,22 @@
             border-radius: 5px;
             cursor: pointer;
             transition: transform 0.2s;
-            display: inline-block;
+            position: relative;
         }
 
-        /* Estilo para los botones de descarga con colores invertidos */
         .btn-download {
-            background-color: #00bcff; /* Fondo Azul Cian */
-            color: #ff4b2b; /* Texto Naranja del cuadro */
-            border: none;
+            background-color: transparent; 
+            color: #00bcff; 
+            border: 2px solid #00bcff;
             padding: 12px 28px;
             font-size: 0.9rem;
-            font-weight: 900; /* Texto bien marcado */
+            font-weight: 900;
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-    	    border: 2px solid #00bcff;
-            background-color: transparent; /* Fondo negro transparente */
-            color: #00bcff;
-            transition: all 0.3s ease;
+            position: relative;
         }
 
         .btn-refresh:hover {
@@ -91,40 +101,24 @@
             transform: scale(1.05);
         }
 
-        /* Hover especial para botones de descarga */
         .btn-download:hover {
-            background-color: #0098cc; /* Azul un poco más oscuro */
-            color: #ffffff; /* Texto cambia a blanco al pasar el mouse */
+            background-color: #00bcff; 
+            color: #000; 
             transform: scale(1.05);
-            box-shadow: 0px 0px 15px rgba(0, 188, 255, 0.4); /* Brillo azul */
-            background-color: #00bcff; /* Se llena de color al pasar el mouse */
-            color: #000; /* Letras negras para máximo contraste */
-            box-shadow: 0 0 20px #00bcff;
-        }
-
-        .btn-refresh:active, .btn-download:active {
-            transform: scale(0.95);
+            box-shadow: 0px 0px 20px #00bcff;
         }
 
         .info-box {
-            background-color: #222;
+            background-color: rgba(34, 34, 34, 0.7);
             border: 1px solid #ff4500;
             color: #fff;
             padding: 15px;
             border-radius: 8px;
             max-width: 500px;
             text-align: center;
-            margin-top: 60px; 
-        }
-
-        .info-box p {
-            margin: 10px 0;
-        }
-
-        .info-box a {
-            color: #00bcff;
-            text-decoration: underline;
-            margin: 0 10px;
+            margin-top: 60px;
+            position: relative;
+            backdrop-filter: blur(5px);
         }
 
         .top-bar {
@@ -134,22 +128,21 @@
             width: 100%;
             text-align: center;
             padding: 12px 0;
-            background-color: rgba(0, 188, 255, 0.1);
+            background-color: rgba(0, 188, 255, 0.05);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid #00bcff;
             z-index: 1000;
         }
 
-        .top-bar p {
-            color: #00bcff;
-            font-weight: bold;
-            margin: 0;
-            font-size: 1.1em;
-            letter-spacing: 1px;
-        }
+        .top-bar p { color: #00bcff; font-weight: bold; margin: 0; font-size: 1.1em; }
+        .info-box a { color: #00bcff; text-decoration: underline; margin: 0 10px; }
     </style>
 </head>
 
 <body>
+
+<!-- Contenedor para las partículas de HackerMarket -->
+<div id="particles-js"></div>
 
 <div class="top-bar">
     <p>Pagina creada por Guayjoles con fines puramente informativos</p>
@@ -164,32 +157,62 @@
 <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
 
 <div class="button-container">
-    <button class="btn-download" onclick="window.open('https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip', '_blank')">Descargar Codex</button>
-    <button class="btn-download" onclick="window.open('https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip', '_blank')">Descargar MemeSense</button>
+    <a href="https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip" class="btn-download" download>Descargar Codex</a>
+    <button class="btn-download" onclick="window.open('URL_MEMESENSE', '_blank')">Descargar MemeSense</button>
 </div>
 
 <div class="info-box">
     <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
-
-    <p>
-        Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:
-    </p>
-
+    <p>Si no te muestra el PIN, asegúrate de tener instaladas estas extensiones:</p>
     <div>
-        <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">
-            1. X-Frame Headers
-        </a>
-        <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">
-            2. CORS Unblock
-        </a>
+        <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
+        <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
     </div>
-
-    <p style="font-size: 0.8em; color: #aaa;">
-        * Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.
-    </p>
 </div>
 
+<!-- Librería de partículas -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <script>
+    /* Configuración de partículas estilo HackerMarket */
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#00bcff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": false },
+            "size": { "value": 3, "random": true },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#00bcff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 2,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": { "enable": true, "mode": "grab" },
+                "onclick": { "enable": true, "mode": "push" },
+                "resize": true
+            },
+            "modes": {
+                "grab": { "distance": 200, "line_linked": { "opacity": 1 } }
+            }
+        },
+        "retina_detect": true
+    });
+
     function refreshPin() {
         var iframe = document.getElementById('pinFrame');
         iframe.src = iframe.src;
