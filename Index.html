@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PIN Guayjoles</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #ff4b2b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* TUS COORDENADAS DE CUADRO */
+        .search-box {
+            width: 300px; 
+            height: 100px; 
+            overflow: hidden; 
+            border: 3px solid #ff4b2b;
+            background-color: #1a1a1a;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* TUS COORDENADAS DE POSICIÓN */
+        iframe {
+            width: 1500px; 
+            height: 2000px;
+            margin-left: -600px; 
+            margin-top: -580px; 
+            border: none;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .btn-refresh {
+            background-color: #ff4b2b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-refresh:hover { background-color: #ff3311; transform: scale(1.05); }
+        .btn-refresh:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <h2>INGRESA EL PIN EN EL PROGRAMA</h2>
+
+    <div class="search-box">
+        <iframe id="pinFrame" src="https://undetek.com/download/free-cs2-cheats-download/" scrolling="no"></iframe>
+    </div>
+
+    <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
+
+    <script>
+        function refreshPin() {
+            var iframe = document.getElementById('pinFrame');
+            iframe.src = iframe.src;
+        }
+    </script>
+
+</body>
+</html>
