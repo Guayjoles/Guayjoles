@@ -11,12 +11,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* 🔥 ya no centra todo */
+            justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
             font-family: sans-serif;
-            padding-top: 130px; /* espacio para el header */
-            gap: 20px; /* separación automática */
+            padding-top: 130px; 
+            gap: 20px; 
         }
 
         h2 {
@@ -46,6 +46,13 @@
             pointer-events: none;
         }
 
+        /* Contenedor para los nuevos botones */
+        .button-container {
+            display: flex;
+            gap: 25px; 
+            margin-top: 35px; /* Ajustado para bajar un poco más */
+        }
+
         .btn-refresh {
             background-color: #ff4b2b;
             color: white;
@@ -57,6 +64,26 @@
             border-radius: 5px;
             cursor: pointer;
             transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        /* Estilo para los botones de descarga con colores invertidos */
+        .btn-download {
+            background-color: #00bcff; /* Fondo Azul Cian */
+            color: #ff4b2b; /* Texto Naranja del cuadro */
+            border: none;
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: 900; /* Texto bien marcado */
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+    	    border: 2px solid #00bcff;
+            background-color: transparent; /* Fondo negro transparente */
+            color: #00bcff;
+            transition: all 0.3s ease;
         }
 
         .btn-refresh:hover {
@@ -64,7 +91,18 @@
             transform: scale(1.05);
         }
 
-        .btn-refresh:active {
+        /* Hover especial para botones de descarga */
+        .btn-download:hover {
+            background-color: #0098cc; /* Azul un poco más oscuro */
+            color: #ffffff; /* Texto cambia a blanco al pasar el mouse */
+            transform: scale(1.05);
+            box-shadow: 0px 0px 15px rgba(0, 188, 255, 0.4); /* Brillo azul */
+            background-color: #00bcff; /* Se llena de color al pasar el mouse */
+            color: #000; /* Letras negras para máximo contraste */
+            box-shadow: 0 0 20px #00bcff;
+        }
+
+        .btn-refresh:active, .btn-download:active {
             transform: scale(0.95);
         }
 
@@ -76,7 +114,7 @@
             border-radius: 8px;
             max-width: 500px;
             text-align: center;
-	    margin-top: 130px;
+            margin-top: 60px; 
         }
 
         .info-box p {
@@ -90,7 +128,7 @@
         }
 
         .top-bar {
-            position: fixed; /* 🔥 mejor que absolute */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -113,7 +151,6 @@
 
 <body>
 
-<!-- Barra superior -->
 <div class="top-bar">
     <p>Pagina creada por Guayjoles con fines puramente informativos</p>
 </div>
@@ -126,7 +163,11 @@
 
 <button class="btn-refresh" onclick="refreshPin()">Refrescar</button>
 
-<!-- Caja de ayuda -->
+<div class="button-container">
+    <button class="btn-download" onclick="window.open('https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip', '_blank')">Descargar Codex</button>
+    <button class="btn-download" onclick="window.open('https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip', '_blank')">Descargar MemeSense</button>
+</div>
+
 <div class="info-box">
     <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
 
