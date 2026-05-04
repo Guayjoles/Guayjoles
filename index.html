@@ -46,17 +46,16 @@
             backdrop-filter: blur(8px);
             border-bottom: 1px solid #00bcff;
             z-index: 1000;
-            transition: all 0.4s ease;
         }
 
         .top-bar p { 
-            color: #00bcff; /* El color de la letra se queda azul */
+            color: #00bcff; 
             font-family: 'Orbitron', sans-serif;
             font-weight: bold; 
             margin: 0; 
             font-size: 1.1em;
             letter-spacing: 2px;
-            /* Aplicamos la animación con brillo NARANJA */
+            text-transform: none; /* Respeta mayúsculas/minúsculas */
             animation: neon-glow-orange-breath 2s ease-in-out infinite alternate;
         }
 
@@ -72,6 +71,7 @@
             text-shadow: 0 0 5px rgba(255, 75, 43, 0.5);
         }
 
+        /* CAJA DEL PIN */
         .search-box {
             width: 100%;
             max-width: 300px;
@@ -83,6 +83,8 @@
             backdrop-filter: blur(3px);
             box-shadow: 0 0 10px rgba(255, 75, 43, 0.3);
         }
+
+        iframe { width: 1500px; height: 2000px; margin-left: -600px; margin-top: -585px; border: none; position: absolute; pointer-events: none; }
 
         .btn-refresh {
             background-color: #ff4b2b;
@@ -96,18 +98,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Orbitron', sans-serif;
-        }
-
-        /* ANIMACIÓN DE RESPIRACIÓN EN COLOR NARANJA */
-        @keyframes neon-glow-orange-breath {
-            from {
-                /* Brillo naranja sutil */
-                text-shadow: 0 0 5px rgba(255, 75, 43, 0.4), 0 0 10px rgba(255, 75, 43, 0.2);
-            }
-            to {
-                /* Brillo naranja intenso */
-                text-shadow: 0 0 15px rgba(255, 75, 43, 1), 0 0 25px rgba(255, 75, 43, 0.7);
-            }
+            margin-top: 10px;
         }
 
         /* BOTONES DE DESCARGA */
@@ -143,10 +134,30 @@
             box-shadow: 0px 0px 20px #00bcff;
         }
 
-        /* CONFIGURACIÓN IFRAME Y CAJA INFO */
-        iframe { width: 1500px; height: 2000px; margin-left: -600px; margin-top: -585px; border: none; position: absolute; pointer-events: none; }
-        .info-box { background-color: rgba(34, 34, 34, 0.7); border: 1px solid #ff4500; color: #fff; padding: 15px; border-radius: 8px; max-width: 500px; text-align: center; margin-top: 40px; backdrop-filter: blur(5px); }
-        .info-box a { color: #00bcff; text-decoration: underline; margin: 0 10px; display: inline-block; }
+        /* CAJA DE INFORMACIÓN (Estilo Foto 1) */
+        .info-box {
+            background-color: rgba(34, 34, 34, 0.7);
+            border: 1px solid #ff4b2b;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            text-align: center;
+            margin-top: 40px;
+            backdrop-filter: blur(5px);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-box a { color: #00bcff; text-decoration: underline; font-weight: bold; }
+        .info-box b { color: #fff; }
+        .brave-note { font-size: 0.85rem; color: #bbb; margin-top: 10px; display: block; }
+
+        /* ANIMACIÓN DE RESPIRACIÓN EN COLOR NARANJA */
+        @keyframes neon-glow-orange-breath {
+            from { text-shadow: 0 0 5px rgba(255, 75, 43, 0.4); }
+            to { text-shadow: 0 0 15px rgba(255, 75, 43, 1), 0 0 25px rgba(255, 75, 43, 0.7); }
+        }
 
         @media (max-width: 600px) {
             body { padding-top: 100px; }
@@ -175,13 +186,16 @@
         <a href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>Descargar MemeSense</a>
     </div>
 
+    <!-- Sección de Información restaurada según Foto 1 -->
     <div class="info-box">
-        <p style="font-weight: bold; color: #ff4500;">⚠️ ¿No se muestra el PIN?</p>
-        <p>Instala estas extensiones:</p>
-        <div>
-            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
-            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
+        <p style="font-weight: bold; color: #ff4b2b; margin-top: 0;">⚠️ ¿No se muestra el PIN?</p>
+        <p>Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:</p>
+        <div style="margin: 15px 0;">
+            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe?utm_campaign=22942216057&utm_campaign=22942216057&utm_content=191296809784&utm_content=191296809784&utm_medium=cpc&utm_medium=cpc&utm_source=google&utm_source=google&utm_term=ad%20remover%20software&utm_term=ad%20remover%20software" target="_blank">1. X-Frame Headers</a>
+            &nbsp;&nbsp;
+            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?utm_campaign=22942216057&utm_campaign=22942216057&utm_content=191296809784&utm_content=191296809784&utm_medium=cpc&utm_medium=cpc&utm_source=google&utm_source=google&utm_term=ad%20remover%20software&utm_term=ad%20remover%20software" target="_blank">2. CORS Unblock</a>
         </div>
+        <span class="brave-note">* Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
