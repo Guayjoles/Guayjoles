@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guayjoles Page</title>
+    <title>Guayjoles Home</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -106,7 +106,6 @@
             width: 100%;
         }
 
-        /* Contenedor individual para cada botón y su status */
         .download-group {
             display: flex;
             flex-direction: column;
@@ -137,6 +136,15 @@
             box-shadow: 0px 0px 20px #00bcff;
         }
 
+        /* ESTILO PARA BOTÓN DESACTIVADO */
+        .btn-disabled {
+            color: #555 !important;
+            border-color: #555 !important;
+            pointer-events: none; /* Bloquea el clic */
+            box-shadow: none !important;
+            opacity: 0.6;
+        }
+
         .status-wrapper {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
@@ -155,7 +163,7 @@
             border-radius: 8px;
             max-width: 600px;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 60px; /* Ya bajado para que no pegue */
             backdrop-filter: blur(5px);
             font-size: 0.95rem;
             line-height: 1.6;
@@ -205,7 +213,7 @@
     <div class="button-container">
         <!-- SECCIÓN CODEX -->
         <div class="download-group">
-            <a href="https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip" class="btn-download" download>Descargar Codex</a>
+            <a id="btn-codex" href="https://github.com/Guayjoles/Guayjoles/raw/main/codex.zip" class="btn-download" download>Descargar Codex</a>
             <div class="status-wrapper">
                 <span class="status-label">Status:</span> 
                 <span id="status-codex">Cargando...</span>
@@ -214,7 +222,7 @@
 
         <!-- SECCIÓN MEMESENSE -->
         <div class="download-group">
-            <a href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>Descargar MemeSense</a>
+            <a id="btn-memesense" href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>Descargar MemeSense</a>
             <div class="status-wrapper">
                 <span class="status-label">Status:</span> 
                 <span id="status-memesense">Cargando...</span>
@@ -226,7 +234,7 @@
         <p style="font-weight: bold; color: #ff4b2b; margin-top: 0;">⚠️ ¿No se muestra el PIN?</p>
         <p>Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:</p>
         <div style="margin: 15px 0;">
-            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
+            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe" target="_blank">1. X-Frame Headers</a>
             &nbsp;&nbsp;
             <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
         </div>
@@ -262,21 +270,26 @@
             iframe.src = iframe.src;
         }
 
-        // FUNCIONES DE CONTROL INDEPENDIENTES
-        function updateStatus(id, state) {
-            const element = document.getElementById(id);
+        // NUEVA FUNCIÓN QUE CONTROLA STATUS Y BLOQUEO DE BOTÓN
+        function updateStatus(statusId, btnId, state) {
+            const statusElement = document.getElementById(statusId);
+            const btnElement = document.getElementById(btnId);
+
             if (state === 'ON') {
-                element.innerText = 'Activo';
-                element.className = 'status-on';
+                statusElement.innerText = 'Activo';
+                statusElement.className = 'status-on';
+                btnElement.classList.remove('btn-disabled');
             } else {
-                element.innerText = 'No Usar';
-                element.className = 'status-off';
+                statusElement.innerText = 'No Usar';
+                statusElement.className = 'status-off';
+                btnElement.classList.add('btn-disabled');
             }
         }
 
         // --- CONTROLA TUS STATUS AQUÍ ---
-        updateStatus('status-codex', 'ON');     // Cambia 'ON' o 'OFF' para Codex
-        updateStatus('status-memesense', 'ON'); // Cambia 'ON' o 'OFF' para MemeSense
+        // updateStatus('ID_TEXTO', 'ID_BOTON', 'ESTADO');
+        updateStatus('status-codex', 'btn-codex', 'ON');     // Cambia 'ON' o 'OFF'
+        updateStatus('status-memesense', 'btn-memesense', 'ON'); // Cambia 'ON' o 'OFF'
 
     </script>
 </body>
