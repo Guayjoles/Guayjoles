@@ -55,7 +55,7 @@
             margin: 0; 
             font-size: 1.1em;
             letter-spacing: 2px;
-            text-transform: none; /* Respeta mayúsculas/minúsculas */
+            text-transform: none; 
             animation: neon-glow-orange-breath 2s ease-in-out infinite alternate;
         }
 
@@ -134,7 +134,7 @@
             box-shadow: 0px 0px 20px #00bcff;
         }
 
-        /* CAJA DE INFORMACIÓN (Estilo Foto 1) */
+        /* CAJA DE INFORMACIÓN */
         .info-box {
             background-color: rgba(34, 34, 34, 0.7);
             border: 1px solid #ff4b2b;
@@ -153,7 +153,20 @@
         .info-box b { color: #fff; }
         .brave-note { font-size: 0.85rem; color: #bbb; margin-top: 10px; display: block; }
 
-        /* ANIMACIÓN DE RESPIRACIÓN EN COLOR NARANJA */
+        /* ESTILO DEL FOOTER (DERECHOS RESERVADOS) */
+        .footer {
+            margin-top: 60px;
+            padding-bottom: 30px;
+            font-size: 0.8rem;
+            color: white; /* Color blanco como pediste */
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            width: 100%;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* ANIMACIONES */
         @keyframes neon-glow-orange-breath {
             from { text-shadow: 0 0 5px rgba(255, 75, 43, 0.4); }
             to { text-shadow: 0 0 15px rgba(255, 75, 43, 1), 0 0 25px rgba(255, 75, 43, 0.7); }
@@ -186,16 +199,20 @@
         <a href="https://github.com/Guayjoles/Guayjoles/raw/main/memesense.zip" class="btn-download" download>Descargar MemeSense</a>
     </div>
 
-    <!-- Sección de Información restaurada según Foto 1 -->
     <div class="info-box">
         <p style="font-weight: bold; color: #ff4b2b; margin-top: 0;">⚠️ ¿No se muestra el PIN?</p>
         <p>Si no te muestra el PIN, asegúrate de tener instaladas y <b>activas</b> estas extensiones:</p>
         <div style="margin: 15px 0;">
-            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe?utm_campaign=22942216057&utm_campaign=22942216057&utm_content=191296809784&utm_content=191296809784&utm_medium=cpc&utm_medium=cpc&utm_source=google&utm_source=google&utm_term=ad%20remover%20software&utm_term=ad%20remover%20software" target="_blank">1. X-Frame Headers</a>
+            <a href="https://chromewebstore.google.com/detail/ignore-x-frame-headers/glebebebhkeokocabneocpganebkoool" target="_blank">1. X-Frame Headers</a>
             &nbsp;&nbsp;
-            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?utm_campaign=22942216057&utm_campaign=22942216057&utm_content=191296809784&utm_content=191296809784&utm_medium=cpc&utm_medium=cpc&utm_source=google&utm_source=google&utm_term=ad%20remover%20software&utm_term=ad%20remover%20software" target="_blank">2. CORS Unblock</a>
+            <a href="https://chromewebstore.google.com/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino" target="_blank">2. CORS Unblock</a>
         </div>
         <span class="brave-note">* Si usas Brave, recuerda desactivar los <b>Shields (Escudos)</b> para este sitio.</span>
+    </div>
+
+    <!-- NUEVO FOOTER CENTRADO -->
+    <div class="footer">
+        Todos los derechos reservados. &copy; Guayjoles 2026
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
